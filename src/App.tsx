@@ -1,4 +1,6 @@
 import RenderRouter from '~/router';
+import { IntlProvider } from 'react-intl';
+import { localeConfig } from './locales';
 import { ConfigProvider, Spin } from 'antd';
 import { useSelector } from 'react-redux';
 import { AppState } from './stores';
@@ -9,10 +11,12 @@ function App() {
 
   return (
     <ConfigProvider>
-      <HistoryRouter history={history}>
-        <Spin spinning={loading} className="app-loading-wrapper"></Spin>
-        <RenderRouter />
-      </HistoryRouter>
+      <IntlProvider locale={'en'} messages={localeConfig['en']}>
+        <HistoryRouter history={history}>
+          <Spin spinning={loading} className="app-loading-wrapper"></Spin>
+          <RenderRouter />
+        </HistoryRouter>
+      </IntlProvider>
     </ConfigProvider>
   );
 }

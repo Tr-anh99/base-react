@@ -1,8 +1,9 @@
-import type { FC } from 'react';
-import type { RouteObject } from 'react-router';
-
 import { lazy } from 'react';
+import type { FC } from 'react';
+
+import type { RouteObject } from 'react-router';
 import { Navigate } from 'react-router';
+
 import { useRoutes } from 'react-router-dom';
 
 import LayoutPage from '~/layout/Layout';
@@ -26,7 +27,7 @@ const routeList: RouteObject[] = [
   },
   {
     path: '/',
-    element: <WrapperRouteComponent element={<LayoutPage />} />,
+    element: <WrapperRouteComponent element={<LayoutPage />} auth />,
     children: [
       {
         path: '',

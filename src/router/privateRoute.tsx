@@ -5,10 +5,12 @@ import { Button, Result } from 'antd';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router-dom';
+import { useLocale } from '~/locales';
 import { AppState } from '~/stores/index';
 
 const PrivateRoute: FC<RouteProps> = props => {
   const { logged } = useSelector((state: AppState) => state.user);
+  const { formatMessage } = useLocale();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -24,7 +26,7 @@ const PrivateRoute: FC<RouteProps> = props => {
           type="primary"
           onClick={() => navigate(`/login${'?from=' + encodeURIComponent(location.pathname)}`, { replace: true })}
         >
-          Go To Login
+          {formatMessage({ id: 'global.tips.goToLogin' })}
         </Button>
       }
     />
