@@ -4,6 +4,8 @@ import { Router } from 'react-router-dom';
 
 export const history = createBrowserHistory();
 
+console.log(history);
+
 interface HistoryRouterProps {
   history: typeof history;
   children?: React.ReactNode;

@@ -2,16 +2,17 @@ import RenderRouter from '~/router';
 import { ConfigProvider, Spin } from 'antd';
 import { useSelector } from 'react-redux';
 import { AppState } from './stores';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { history, HistoryRouter } from '~/router/History';
+
 function App() {
   const { loading } = useSelector((state: AppState) => state.global);
 
   return (
     <ConfigProvider>
-      <Router>
+      <HistoryRouter history={history}>
         <Spin spinning={loading} className="app-loading-wrapper"></Spin>
         <RenderRouter />
-      </Router>
+      </HistoryRouter>
     </ConfigProvider>
   );
 }
