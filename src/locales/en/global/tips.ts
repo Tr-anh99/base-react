@@ -7,6 +7,7 @@ export const enUS_globalTips = {
   'global.tips.enterUsernameMessage': 'Please enter your Username!',
   'global.tips.password': 'Password',
   'global.tips.enterPasswordMessage': 'Please enter your Password!',
+  'global.tips.forgotPassword': 'Forgot Password!',
   'global.tips.rememberUser': 'Remember user',
   'global.tips.login': 'Login',
   'global.tips.backHome': 'Back Home',

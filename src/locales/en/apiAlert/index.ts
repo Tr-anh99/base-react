@@ -1,7 +1,7 @@
 export const enUS_apiAlert = {
-  'apiAlert.success': 'Thành Công.!',
-  'apiAlert.warning': 'Thành Công.!',
-  'apiAlert.error': 'Lỗi xử lý.!',
-  'apiAlert.cancer': 'Huỷ thao tác.!',
-  'apiAlert.warningNoData': 'Không có dữ liệu thực thi',
+  'apiAlert.success': 'Success!',
+  'apiAlert.warning': 'Warning!',
+  'apiAlert.error': 'Error!',
+  'apiAlert.cancel': 'Cancel!',
+  'apiAlert.warningNoData': 'Warning No Data!',
 };

@@ -11,7 +11,7 @@ import LoginPageStudent from '~/pages/students/login';
 import RegisterStudent from '~/pages/students/register';
 import StudentHome from '~/pages/students/home';
 
-import WrapperRouteComponent from './config';
+import WrapperRouteComponent from './Config';
 
 const NotFound = lazy(() => import('~/pages/404'));
 const DashboardStudent = lazy(() => import('~/pages/students/dashboard'));
@@ -27,7 +27,7 @@ const routeList: RouteObject[] = [
   },
   {
     path: '/',
-    element: <WrapperRouteComponent element={<LayoutPage />} auth />,
+    element: <WrapperRouteComponent element={<LayoutPage />} />,
     children: [
       {
         path: '',
