@@ -87,6 +87,7 @@
     "less-plugin-sass2less": "^1.2.0",
     "node-sass": "^8.0.0",
     "postcss": "^8.4.21",
+    "postcss-100vh-fix": "^1.0.2",
     "prettier": "^2.8.7",
     "sass": "^1.61.0",
     "sass-loader": "^13.2.2",

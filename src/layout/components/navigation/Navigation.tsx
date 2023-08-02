@@ -1,8 +1,10 @@
 import type { MenuProps } from 'antd';
-import { Menu } from 'antd';
+import { Menu, Layout } from 'antd';
 import { ReactComponent as DashboardIcon } from '~/assets/DashboardMenu.svg';
 import { ReactComponent as QuestionIcon } from '~/assets/QuestionMenu.svg';
 import { ReactComponent as CreditCardIcon } from '~/assets/CreditCardMenu.svg';
+
+const { Sider } = Layout;
 
 const Navigation = (): JSX.Element => {
   const items = [
@@ -39,9 +41,9 @@ const Navigation = (): JSX.Element => {
   };
 
   return (
-    <div className="nav">
+    <Sider className="nav">
       <Menu style={{ border: 0 }} onClick={onClick} mode="inline" items={items} />
-    </div>
+    </Sider>
   );
 };
 
