@@ -7,7 +7,7 @@ import { Navigate } from 'react-router';
 import { useRoutes } from 'react-router-dom';
 
 import LayoutPage from '~/layout';
-import LoginPageStudent from '~/pages/students/login';
+import LoginPageStudent from '~/pages/students/Login/index';
 import RegisterStudent from '~/pages/students/register';
 import StudentHome from '~/pages/students/home';
 

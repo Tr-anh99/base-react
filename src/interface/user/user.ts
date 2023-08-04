@@ -7,6 +7,7 @@ export interface UserState {
   /** user's device */
   device: Device;
   isMobile: boolean;
+  isAndroid: boolean;
 
   username: string;
 
