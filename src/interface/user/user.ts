@@ -15,3 +15,46 @@ export interface UserState {
 
   role: Role;
 }
+
+export interface User {
+  id: string | number;
+  name: string;
+  email: string;
+  isActive: boolean;
+  role: ROLE;
+  avatar: string;
+  freeQuestion: number;
+  minutesRemaining?: string;
+  timesRemaining?: number;
+}
+export enum ROLE {
+  student = 'student',
+  tutor = 'tutor',
+  sysadmin = 'sysadmin',
+}
+export interface ApiReturn<T> {
+  message: string;
+  data: T[];
+  paginate: Paginate;
+}
+export interface ApiReturnAdmin<T> extends ApiReturn<T> {
+  totalUser: number;
+}
+export interface ApiReturnDashboard<T> {
+  message: string;
+  data: T;
+}
+export interface ApiReturnMoreInfo<T> {
+  message: string;
+  data: T;
+  paginate: Paginate;
+}
+export interface Paginate {
+  itemsPerPage: number;
+  page?: number;
+  total_pages?: number;
+  totalPages: number;
+}
+export type Notification = {
+  countNotificationQuestion: number;
+};

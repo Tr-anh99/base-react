@@ -1,23 +1,27 @@
-import React from 'react';
 import './index.less';
-import { Button, Col, ColProps, Form, Input, Layout, Row, Typography } from 'antd';
+import { Alert, Button, Col, ColProps, Form, Input, Layout, Row, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { authLoading, loginAction, authErrorMessage } from '~/stores/auth';
 import { AppState } from '~/stores';
+import { LoginParams } from '~/interface/user/login';
+import { useAppDispatch } from '~/stores/hooks';
 
 const StudentLogin = () => {
-  const { isMobile, isAndroid } = useSelector((state: AppState) => state.user);
+  const { isMobile, isAndroid } = useSelector((state: AppState) => state.auth);
 
   const { Title } = Typography;
+  const isLoading = useSelector(authLoading);
+  const errorMessage = useSelector(authErrorMessage);
   const wrapperCol: ColProps = {
     xs: 24,
     sm: 24,
     md: 24,
     lg: 12,
   };
-
-  const onFinish = (values: any) => {
-    console.log(values);
+  const dispatch = useAppDispatch();
+  const onFinish = (values: LoginParams) => {
+    dispatch(loginAction({ ...values, extend: 'student' }));
   };
   const formItemLayout = {
     labelCol: { span: 24 },
@@ -71,11 +75,11 @@ const StudentLogin = () => {
                 <Input type="password" placeholder="at least 8 character" />
               </Form.Item>
               <Form.Item>
-                <Button className="regis_btn" type="primary" htmlType="submit" block>
+                <Button loading={isLoading} className="regis_btn" type="primary" htmlType="submit" block>
                   LOGIN
                 </Button>
               </Form.Item>
-              {/* {errorMessage && <Alert message={errorMessage} type="error" />} */}
+              {errorMessage && <Alert message={errorMessage} type="error" />}
               <div className="alert">
                 Not a member ? <a href="/register"> Register here</a>
                 <div>

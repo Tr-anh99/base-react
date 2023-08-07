@@ -3,8 +3,8 @@ import type { AxiosRequestConfig, Method } from 'axios';
 import { message as $message } from 'antd';
 import axios from 'axios';
 
-import store from '@/stores';
-import { setGlobalState } from '@/stores/global.store';
+import store from '~/stores';
+import { setGlobalState } from '~/stores/global.store';
 
 const axiosInstance = axios.create({
   timeout: 6000,
@@ -12,35 +12,35 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   config => {
-    store.dispatch(
-      setGlobalState({
-        loading: true,
-      }),
-    );
+    // store.dispatch(
+    //   setGlobalState({
+    //     loading: true,
+    //   }),
+    // );
 
     return config;
   },
   error => {
-    store.dispatch(
-      setGlobalState({
-        loading: false,
-      }),
-    );
+    // store.dispatch(
+    //   setGlobalState({
+    //     loading: false,
+    //   }),
+    // );
     Promise.reject(error);
   },
 );
 
 axiosInstance.interceptors.response.use(
   config => {
-    store.dispatch(
-      setGlobalState({
-        loading: false,
-      }),
-    );
+    // store.dispatch(
+    //   setGlobalState({
+    //     loading: false,
+    //   }),
+    // );
 
-    if (config?.data?.message) {
-      // $message.success(config.data.message)
-    }
+    // if (config?.data?.message) {
+    //   $message.success(config.data.message);
+    // }
 
     return config?.data;
   },
@@ -60,14 +60,14 @@ axiosInstance.interceptors.response.use(
       errorMessage = error?.message;
     }
 
-    console.dir(error);
     error.message && $message.error(errorMessage);
 
-    return {
-      status: false,
-      message: errorMessage,
-      result: null,
-    };
+    // return {
+    //   status: false,
+    //   message: errorMessage,
+    //   result: null,
+    // };
+    return error;
   },
 );
 
