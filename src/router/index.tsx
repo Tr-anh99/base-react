@@ -12,22 +12,34 @@ import RegisterStudent from '~/pages/students/register';
 import StudentHome from '~/pages/students/home';
 
 import WrapperRouteComponent from './Config';
+import Page from '~/layout/Page';
+// import { ROLE } from '~/interface/user/user';
 
 const NotFound = lazy(() => import('~/pages/404'));
 const DashboardStudent = lazy(() => import('~/pages/students/dashboard'));
 
 const routeList: RouteObject[] = [
   {
-    path: '/login',
-    element: <WrapperRouteComponent element={<LoginPageStudent />} />,
-  },
-  {
-    path: '/register',
-    element: <WrapperRouteComponent element={<RegisterStudent />} />,
+    path: '/',
+    element: <Navigate to="/login" />,
   },
   {
     path: '/',
-    element: <WrapperRouteComponent element={<LayoutPage />} />,
+    element: <WrapperRouteComponent element={<Page />} guest />,
+    children: [
+      {
+        path: 'login',
+        element: <LoginPageStudent />,
+      },
+      {
+        path: 'register',
+        element: <RegisterStudent />,
+      },
+    ],
+  },
+  {
+    path: '/',
+    element: <WrapperRouteComponent element={<LayoutPage />} auth />,
     children: [
       {
         path: '',

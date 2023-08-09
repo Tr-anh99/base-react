@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder, createAsyncThunk } from '@reduxjs/toolkit';
-import { apiGetMe, apiGetUserToken, apiLogin, apiLogout } from '~/api/auth/auth.api';
-import { getToken, setAdminToken, setToken } from '~/api/auth/helper';
+import { apiGetMe, apiLogin, apiLogout } from '~/api/auth/auth.api';
+import { getToken, setToken } from '~/api/auth/helper';
 
 import { AuthState } from '~/interface/store/auth';
 import { LoginParams } from '~/interface/user/login';
@@ -17,19 +17,7 @@ export const loginAction = createAsyncThunk('auth/login', async (data: LoginPara
     return rejectWithValue(err.response.data);
   }
 });
-export const viewAsUser = createAsyncThunk('admin/users', async (data: any, { dispatch }) => {
-  try {
-    const response = await apiGetUserToken(data);
 
-    setAdminToken(response);
-    dispatch(getInfoAction());
-    window.location.href = '/';
-
-    return response;
-  } catch (error: any) {
-    return error.response.data;
-  }
-});
 export const logoutAction = createAsyncThunk('auth/logout', async () => {
   const response = await apiLogout();
 
@@ -98,16 +86,5 @@ export const logoutReduces = (builder: ActionReducerMapBuilder<AuthState>) => {
       } else {
         setToken('');
       }
-    });
-};
-export const viewAsUserReduces = (builder: ActionReducerMapBuilder<AuthState>) => {
-  builder
-    .addCase(loginAction.pending, state => {
-      state.loading = true;
-      state.errorMessage = '';
-    })
-    .addCase(viewAsUser.fulfilled, state => {
-      state.loading = false;
-      state.logged = true;
     });
 };

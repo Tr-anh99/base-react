@@ -1,8 +1,5 @@
 import { Device } from '../layout/index.interface';
 
-// import type { Role } from './login'
-export type Role = 'student' | 'admin';
-
 export interface UserState {
   /** user's device */
   device: Device;
@@ -13,7 +10,7 @@ export interface UserState {
 
   logged: boolean;
 
-  role: Role;
+  role: ROLE;
 }
 
 export interface User {
@@ -23,38 +20,25 @@ export interface User {
   isActive: boolean;
   role: ROLE;
   avatar: string;
-  freeQuestion: number;
-  minutesRemaining?: string;
-  timesRemaining?: number;
+
+  /** user's device */
+  device: Device;
+  isMobile: boolean;
+  isAndroid: boolean;
 }
 export enum ROLE {
-  student = 'student',
-  tutor = 'tutor',
-  sysadmin = 'sysadmin',
+  user = 'student',
+  admin = 'admin',
 }
 export interface ApiReturn<T> {
   message: string;
   data: T[];
   paginate: Paginate;
 }
-export interface ApiReturnAdmin<T> extends ApiReturn<T> {
-  totalUser: number;
-}
-export interface ApiReturnDashboard<T> {
-  message: string;
-  data: T;
-}
-export interface ApiReturnMoreInfo<T> {
-  message: string;
-  data: T;
-  paginate: Paginate;
-}
+
 export interface Paginate {
   itemsPerPage: number;
   page?: number;
   total_pages?: number;
   totalPages: number;
 }
-export type Notification = {
-  countNotificationQuestion: number;
-};

@@ -11,6 +11,3 @@ export const apiLogin = (data: LoginParams) =>
 export const apiGetMe = () => sdk.get<User>('me').then(res => res.data);
 
 export const apiLogout = () => sdk.post<any, LogoutResult>('logout').then(res => res.data);
-
-export const apiGetUserToken = (value: string) =>
-  sdk.post<any, any>(`admin/users/${value}/get-access-token`).then(res => res.data.token);

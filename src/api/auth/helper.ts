@@ -32,16 +32,7 @@ export function setToken(token: string) {
     window.localStorage.removeItem(TOKEN_STORAGE_KEY);
   }
 }
-export function setAdminToken(token: string) {
-  const oldToken = localStorage.getItem('t');
 
-  if (auth.remember_token && token && oldToken) {
-    window.localStorage.setItem(OLD_TOKEN_STORAGE_KEY, oldToken);
-    window.localStorage.setItem(TOKEN_STORAGE_KEY, token);
-  } else {
-    window.localStorage.removeItem(TOKEN_STORAGE_KEY);
-  }
-}
 export function getRefreshToken() {
   return auth.refresh_token;
 }

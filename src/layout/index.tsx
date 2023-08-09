@@ -8,10 +8,9 @@ import { AppState } from '~/stores';
 
 const { Header, Content, Footer } = Layout;
 const LayoutPage = () => {
-  const { device, isMobile, isAndroid } = useSelector((state: AppState) => state.auth);
+  // const currentUser = useSelector((state: any) => state.auth.currentUser)
+  const { isMobile, isAndroid } = useSelector((state: AppState) => state.auth);
 
-  console.log(device);
-  console.log(isMobile);
   // const dispatch = useDispatch();
 
   return (

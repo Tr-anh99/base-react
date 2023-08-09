@@ -2,7 +2,7 @@ import { Button, Result } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useLocale } from '~/locales';
 
-const NotFoundPage: React.FC = () => {
+const Page404: React.FC = () => {
   const navigate = useNavigate();
   const { formatMessage } = useLocale();
 
@@ -20,4 +20,4 @@ const NotFoundPage: React.FC = () => {
   );
 };
 
-export default NotFoundPage;
+export default Page404;
