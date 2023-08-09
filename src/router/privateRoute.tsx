@@ -18,9 +18,9 @@ export const PrivateRoute: FC<{ role?: ROLE; roles?: ROLE[]; element: React.Reac
   if (!logged) {
     return <Page403 role={role} />;
   }
-  // if (!currentUser) {
-  //   return <Page403 role={role} />;
-  // }
+  if (!currentUser) {
+    return <Page403 role={role} />;
+  }
   // if (roles && roles.length > 0 && !roles.includes(currentUser.role)) {
   //   return <Page404 />;
   // }

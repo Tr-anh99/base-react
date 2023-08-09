@@ -21,10 +21,10 @@ export interface User {
   role: ROLE;
   avatar: string;
 
-  /** user's device */
-  device: Device;
-  isMobile: boolean;
-  isAndroid: boolean;
+  // /** user's device */
+  // device: Device;
+  // isMobile: boolean;
+  // isAndroid: boolean;
 }
 export enum ROLE {
   user = 'student',
