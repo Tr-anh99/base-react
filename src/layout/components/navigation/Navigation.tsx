@@ -71,7 +71,7 @@ const Navigation = (): JSX.Element => {
           id: theme === 'dark' ? 'global.tips.theme.lightTooltip' : 'global.tips.theme.darkTooltip',
         })}
       >
-        <span>
+        <span className="text-1">
           {createElement(theme === 'dark' ? SunSvg : MoonSvg, {
             onClick: onChangeTheme,
           })}
