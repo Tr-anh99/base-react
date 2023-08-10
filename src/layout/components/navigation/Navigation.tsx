@@ -1,12 +1,24 @@
 import type { MenuProps } from 'antd';
-import { Menu, Layout } from 'antd';
+import { Menu, Layout, Tooltip, theme as antTheme } from 'antd';
 import { ReactComponent as DashboardIcon } from '~/assets/DashboardMenu.svg';
 import { ReactComponent as QuestionIcon } from '~/assets/QuestionMenu.svg';
 import { ReactComponent as CreditCardIcon } from '~/assets/CreditCardMenu.svg';
+import { ReactComponent as MoonSvg } from '~/assets/moon.svg';
+import { ReactComponent as SunSvg } from '~/assets/sun.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { createElement } from 'react';
+import { AppState } from '~/stores';
+import { setGlobalState } from '~/stores/global.store';
+import { useLocale } from '~/locales';
 
 const { Sider } = Layout;
 
 const Navigation = (): JSX.Element => {
+  const { theme } = useSelector((state: AppState) => state.global);
+  const dispatch = useDispatch();
+
+  const { formatMessage } = useLocale();
+  const token = antTheme.useToken();
   const items = [
     {
       label: 'Item 1',
@@ -40,9 +52,31 @@ const Navigation = (): JSX.Element => {
     console.log('click ', e.key);
   };
 
+  const onChangeTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+
+    localStorage.setItem('theme', newTheme);
+    dispatch(
+      setGlobalState({
+        theme: newTheme,
+      }),
+    );
+  };
+
   return (
-    <Sider className="nav">
+    <Sider className="nav" style={{ backgroundColor: token.token.colorBgContainer }}>
       <Menu style={{ border: 0 }} onClick={onClick} mode="inline" items={items} />
+      <Tooltip
+        title={formatMessage({
+          id: theme === 'dark' ? 'global.tips.theme.lightTooltip' : 'global.tips.theme.darkTooltip',
+        })}
+      >
+        <span>
+          {createElement(theme === 'dark' ? SunSvg : MoonSvg, {
+            onClick: onChangeTheme,
+          })}
+        </span>
+      </Tooltip>
     </Sider>
   );
 };

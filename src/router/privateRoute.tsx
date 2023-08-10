@@ -12,9 +12,6 @@ import { Page403 } from '~/pages/403';
 export const PrivateRoute: FC<{ role?: ROLE; roles?: ROLE[]; element: React.ReactNode }> = ({ role, element }) => {
   const { logged, currentUser } = useSelector((state: RootState) => state.auth);
 
-  console.log(logged);
-  console.log(currentUser);
-
   if (!logged) {
     return <Page403 role={role} />;
   }

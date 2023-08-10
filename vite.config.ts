@@ -81,7 +81,9 @@ export default defineConfig(config => {
           {
             libName: 'antd',
             style(name) {
-              return `antd/es/${name}/style/index.js`;
+              if (name === 'theme') {
+                return `antd/es/${name}/index.js`;
+              } else return `antd/es/${name}/style/index.js`;
             },
           },
         ],

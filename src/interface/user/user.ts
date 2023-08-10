@@ -1,17 +1,4 @@
-import { Device } from '../layout/index.interface';
-
-export interface UserState {
-  /** user's device */
-  device: Device;
-  isMobile: boolean;
-  isAndroid: boolean;
-
-  username: string;
-
-  logged: boolean;
-
-  role: ROLE;
-}
+// import { Device } from '../layout/index.interface';
 
 export interface User {
   id: string | number;
