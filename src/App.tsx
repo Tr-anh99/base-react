@@ -8,14 +8,17 @@ import { history, HistoryRouter } from '~/router/History';
 import enUS from 'antd/locale/en_US';
 import './index.css';
 import { getInitData } from './stores/auth';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { setGlobalState } from './stores/global.store';
 
 function App() {
   const { theme, loading } = useSelector((state: AppState) => state.global);
   const dispatch = useDispatch<AppDispatch>();
 
-  dispatch(getInitData());
+  useEffect(() => {
+    //get current user
+    dispatch(getInitData());
+  }, []);
 
   const setTheme = (dark = true) => {
     dispatch(
@@ -48,8 +51,10 @@ function App() {
     >
       <IntlProvider locale={'en'} messages={localeConfig['en']}>
         <HistoryRouter history={history}>
-          <Spin spinning={loading} className="app-loading-wrapper"></Spin>
-          <RenderRouter />
+          <Suspense fallback={null}>
+            <Spin spinning={loading} className="app-loading-wrapper"></Spin>
+            <RenderRouter />
+          </Suspense>
         </HistoryRouter>
       </IntlProvider>
     </ConfigProvider>

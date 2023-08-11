@@ -1,13 +1,13 @@
+import { FC, Suspense } from 'react';
 import { Layout } from 'antd';
 import Navigation from './components/navigation/Navigation';
 import { Outlet } from 'react-router';
-import { Suspense } from 'react';
 import './index.less';
 import { useSelector } from 'react-redux';
 import { AppState } from '~/stores';
 
 const { Header, Content, Footer } = Layout;
-const LayoutPage = () => {
+const LayoutPage: FC = () => {
   // const currentUser = useSelector((state: any) => state.auth.currentUser)
   const { isMobile, isAndroid } = useSelector((state: AppState) => state.auth);
 

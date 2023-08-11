@@ -1,5 +1,5 @@
 import type { MenuProps } from 'antd';
-import { Menu, Layout, Tooltip, theme as antTheme } from 'antd';
+import { Menu, Layout, Tooltip, theme as antTheme, Card } from 'antd';
 import { ReactComponent as DashboardIcon } from '~/assets/DashboardMenu.svg';
 import { ReactComponent as QuestionIcon } from '~/assets/QuestionMenu.svg';
 import { ReactComponent as CreditCardIcon } from '~/assets/CreditCardMenu.svg';
@@ -66,17 +66,19 @@ const Navigation = (): JSX.Element => {
   return (
     <Sider className="nav" style={{ backgroundColor: token.token.colorBgContainer }}>
       <Menu style={{ border: 0 }} onClick={onClick} mode="inline" items={items} />
-      <Tooltip
-        title={formatMessage({
-          id: theme === 'dark' ? 'global.tips.theme.lightTooltip' : 'global.tips.theme.darkTooltip',
-        })}
-      >
-        <span className="text-1">
-          {createElement(theme === 'dark' ? SunSvg : MoonSvg, {
-            onClick: onChangeTheme,
+      <Card>
+        <Tooltip
+          title={formatMessage({
+            id: theme === 'dark' ? 'global.tips.theme.lightTooltip' : 'global.tips.theme.darkTooltip',
           })}
-        </span>
-      </Tooltip>
+        >
+          <span className="text-1">
+            {createElement(theme === 'dark' ? SunSvg : MoonSvg, {
+              onClick: onChangeTheme,
+            })}
+          </span>
+        </Tooltip>
+      </Card>
     </Sider>
   );
 };
