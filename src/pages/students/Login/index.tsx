@@ -1,18 +1,18 @@
 import './index.less';
 import { Alert, Button, Col, ColProps, Form, Input, Layout, Row, Typography } from 'antd';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { authLoading, loginAction, authErrorMessage } from '~/stores/auth';
 import { AppState } from '~/stores';
 import { LoginParams } from '~/interface/user/login';
-import { useAppDispatch } from '~/stores/hooks';
+import { useAppDispatch, useAppSelector } from '~/stores/hooks';
 
 const StudentLogin = () => {
-  const { isMobile, isAndroid } = useSelector((state: AppState) => state.auth);
+  const { isMobile, isAndroid } = useAppSelector((state: AppState) => state.auth);
 
   const { Title } = Typography;
-  const isLoading = useSelector(authLoading);
-  const errorMessage = useSelector(authErrorMessage);
+  const isLoading = useAppSelector(authLoading);
+  const errorMessage = useAppSelector(authErrorMessage);
   const wrapperCol: ColProps = {
     xs: 24,
     sm: 24,
